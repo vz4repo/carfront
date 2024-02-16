@@ -17,18 +17,18 @@ const [car, setCar] = useState({
 // modal form
 const handleClickOpen = () => {
     setOpen(true);
-}
+};
 const handleClose = () => {
     setOpen(false);
-}
+};
 const handleChange = (event) => {
     setCar({...car, [event.target.name]: event.target.value});
-}
+};
 // save and close modal form
 const handleSave = () => {
     props.addCar(car);
     handleClose();
-}
+};
     return(
         <div>
             {/* <button onClick={handleClickOpen}>New Car</button> */}
@@ -50,12 +50,12 @@ const handleSave = () => {
                     </Stack>
                 </DialogContent>
                 <DialogActions>
-                    <button onClick={handleClose}>취소</button>
-                    <button onClick={handleSave}>저장</button>
+                    <Button onClick={handleClose}>취소</Button>
+                    <Button onClick={handleSave}>저장</Button>
                 </DialogActions>
             </Dialog>
         </div>
-    )
+    );
 }
 
 export default AddCar;

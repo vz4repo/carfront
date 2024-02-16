@@ -44,10 +44,15 @@ function Carlist() {
     ];
 
     const fetchCars = () =>{
-        fetch(SERVER_URL + 'api/cars')
+        // read jwtToken from session storage
+        const token = sessionStorage.getItem("jwt");
+
+        fetch(SERVER_URL + 'api/cars', {
+            headers:{'Authorization':token}
+        })
         .then(response => response.json())
         .then(data => setCars(data._embedded.cars))
-        .then(console.log("yes"))
+        .then(console.log("fetch yes"))
         .catch(err => console.error(err));
     }
 
@@ -114,8 +119,6 @@ function Carlist() {
             <Stack mt={2} mb={2}>
 <AddCar addCar={addCar} />
             </Stack>
-            
-
         <div style={{ height:500, width: '100%'}}>
             {/* <table>
                 <tbody>
